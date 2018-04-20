@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue - Router</title>
+</head>
+<body>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+	<div id="app">
+	  <h1>Hello App!</h1>
+	  <p>
+	    <!-- use router-link component for navigation. -->
+	    <!-- specify the link by passing the `to` prop. -->
+	    <!-- `<router-link>` will be rendered as an `<a>` tag by default -->
+	    <router-link to="/foo">Go to Foo</router-link>
+	    <router-link to="/bar">Go to Bar</router-link>
+	    <router-link to="/other">Go to Other</router-link>
+	    <router-link to="/form1">Go to form</router-link>
+	  </p>
+	  <!-- route outlet -->
+	  <!-- component matched by the route will render here -->
+	  <router-view></router-view>
+
+	</div>
+	<script type="text/javascript">
+		
+	const component1 = Vue.component('my-component', {
+		  template: '<div>A custom component! <button>Guardar</button></div>'
+		});
+	const form1 = Vue.component('my-form', {
+		  template: `<div>
+		  	<input type="text" name="">	
+		  	</div>`
+		});
+
+	const Foo = { template: '<div>foo</div>' }
+	const Bar = { template: '<div>bar</div>' }
+
+	const routes = [
+	  { path: '/foo', component: Foo },
+	  { path: '/bar', component: Bar },
+	  { path: '/other', component: component1},
+	  { path: '/form1', component: form1}
+	]
+
+	const router = new VueRouter({
+	  routes // short for `routes: routes`
+	})
+
+	const app = new Vue({
+	  router
+	}).$mount('#app')
+	</script>
+</body>
+</html>
